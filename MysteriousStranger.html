@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Mysterious Stranger</title>
+<script src="Scripts/Fate.js"></script>
+<script src="Scripts/Meaning.js"></script>
+<script src="Scripts/script.js"></script>
+<script src="Scripts/audio.js"></script>
+<link rel="stylesheet" href="UI/fallout.css">
+<audio id="click1" src="Audio/Effects/click_1.wav" preload="auto"></audio>
+<audio id="type1" src="Audio/Effects/type_1.wav" preload="auto"></audio>
+<audio id="encounter" src="Audio/Effects/encounter.mp3" preload="auto"></audio>
+<audio id="radioButton" src="Audio/Effects/button.wav" preload="auto"></audio>
+<audio id="nothing" src="Audio/Voice/nothing.mp3" preload="auto"></audio>
+<audio id="yes" src="Audio/Voice/yes.mp3" preload="auto"></audio>
+<audio id="no" src="Audio/Voice/no.mp3" preload="auto"></audio>
+<audio id="exc_yes" src="Audio/Voice/exc_yes.mp3" preload="auto"></audio>
+<audio id="exc_no" src="Audio/Voice/exc_no.mp3" preload="auto"></audio>
+<audio id="someDetails" src="Audio/Voice/someDetails.mp3" preload="auto"></audio>
+<audio id="noise" src="Audio/Voice/noise.mp3" preload="auto"></audio>
+<audio id="radioNewVegas" src = "Audio/Radio/NV/Radio New Vegas.mp3" preload="auto"></audio>
+<audio id="radioDiamondCity" src = "Audio/Radio/DCR/Diamond City Radio.mp3" preload="auto"></audio>
+<audio id="radioGalaxyNews" src = "Audio/Radio/GNR/Galaxy News Radio.mp3" preload="auto"></audio>
+<audio id="radioOther" src = "Audio/Radio/Other/OtherRadio.mp3" preload="auto"></audio>
+</head>
+<body>
+  <div class="interface">
+    
+    <div class="screen">
+      <div id="CRT">
+        <div id="MS0"></div>
+        <img id="MS" src="UI/MS.png" width="100%">
+      </div>
+        <img src="UI/MysteriousStrangerBG.png" alt="Mysterious Stranger" width="100%">
+    </div>
+    <div id="radioLight" class="light-off"></div>
+    <button id="radio-button" onclick = "on_off()"></button>
+    
+      <div class="effect", id="answer"></div>
+      <div class="effect", id="event"></div>
+      
+    <div class="display">
+        <!-- Display content here -->
+        <div class="effect", id="main">
+          
+          <ul>
+        <li>
+          <button class="falloutbtn" onclick="openDropdown('q-selection')">[Set Question] <span id="selected-q"></span></button> <br/>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="openDropdown('odd-selection')">[Set Odd] <span id="selected-odd"></span></button> <br/>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="openDropdown('cf-selection')">[Set Chaos Factor] <span id="selected-cf"></span></button> <br/>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="openDropdown('radio-selection')">[Set Radio] <span id="selected-radio"></span></button> <br/>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="TellMe()">Tell me Stranger.</button> <br/>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="silence()">....</button><br>
+        </li>
+        <li>
+        <button class="falloutbtn" onclick="Exit()">Goodbye for now.</button>
+        </li>
+        </ul>
+        </div>
+        <div class="dropdown-kuno" id="q-selection">
+          <input id="q" maxlength="39"/><br/>
+          <button class="falloutbtn" onclick="setQ_yn()">YES/NO</button> or <button class="falloutbtn" onclick="setQ_desc()">DESCRIPTION</button>
+        </div>
+        <div class="dropdown-kuno" id="odd-selection">
+          <ul>
+            <li>
+              <button class="falloutbtn" onclick="setOdd('Certain')">Certain</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="setOdd('Nearly Certain')">Nearly Certain</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="setOdd('Very Likely')">Very Likely</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="setOdd('Likely')">Likely</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="setOdd('50/50')">50/50</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="setOdd('Unlikely')">Unlikely</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="setOdd('Very Unlikely')">Very Unlikely</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="setOdd('Nearly Impossible')">Nearly Impossible</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="setOdd('Impossible')">Impossible</button>
+            </li>
+            
+          </ul>
+    </div>
+
+    <div class="dropdown-kuno" id="cf-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="setCF('1')">1</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="setCF('2')">2</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="setCF('3')">3</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="setCF('4')">4</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="setCF('5')">5</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="setCF('6')">6</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="setCF('7')">7</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="setCF('8')">8</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="setCF('9')">9</button>
+        </li>
+        
+      </ul>
+      </div>
+
+      <div class="dropdown-kuno" id="radio-selection">
+        <ul>
+          <li>
+            <button class="falloutbtn" onclick="setRadio('Galaxy News Radio')">Galaxy News Radio</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="setRadio('Radio New Vegas')">Radio New Vegas</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="setRadio('Diamond City Radio')">Diamond City Radio</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="setRadio('Other Radio')">Other Radio</button>
+          </li>
+        </ul>
+      </div>
+    
+</body>
+</html>
