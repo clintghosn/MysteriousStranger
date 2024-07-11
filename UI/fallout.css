@@ -148,10 +148,16 @@ input {
 .spoiler {
     background-color: black;
     color: black;
+    font-family:'Fira Mono', monospace;
 }
+
 .spoiler:hover {
     background-color: none;
-    font-family:'Fira Mono', monospace;
+    animation:colorPulse 5s infinite ease-in-out;
+}
+
+.spoiler.no-spoiler {
+    background-color: none !important;
     animation:colorPulse 5s infinite ease-in-out;
 }
 
