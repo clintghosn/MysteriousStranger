@@ -7,6 +7,7 @@
 <script src="Scripts/Fate.js"></script>
 <script src="Scripts/Meaning.js"></script>
 <script src="Scripts/script.js"></script>
+<script src="Scripts/Descriptors_List.js"></script>
 <script src="Scripts/EventListeners.js"></script>
 <script src="Scripts/audio.js"></script>
 <link rel="stylesheet" href="UI/fallout.css">
@@ -71,8 +72,217 @@
         </ul>
         </div>
         <div class="dropdown-kuno" id="q-selection">
-          <input id="q" maxlength="39"/><br/>
-          <button class="falloutbtn" onclick="setQ_yn()">YES/NO</button> or <button class="falloutbtn" onclick="setQ_desc()">DESCRIPTION</button>
+          <input id="q" maxlength="40"/><br/>
+          <ul>
+            <li>
+              <button class="falloutbtn" onclick="setQ_yn()">YES/NO</button><br/>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="setQ_desc()">DESCRIPTION</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="openCheckbox('adv-selection')">ADVANCED DESCRIPTIONS<span id="selected-radio"></span></button>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="dropdown-kuno2" id="adv-selection">
+          <button class="falloutbtn" onclick="setDesc()">[PROCEED]</button> <button class="falloutbtn" onclick="selectAll()">[SELECT ALL]</button> <button class="falloutbtn" onclick="unselectAll()">[UNSELECT ALL]</button> <button class="falloutbtn" onclick="tickSpecified('char')">[CHARACTER FOCUS]</button>
+          _____________________________________________________
+          <label class="checkbox-btn">
+            <input type="checkbox" id="adv45" class="falloutchkbx"><span>|Actions, General 1|</span>
+          </label>
+          <label class="checkbox-btn">
+            <input type="checkbox" id="adv46" class="falloutchkbx"><span>|Actions, General 2|</span>
+          </label>
+          <label class="checkbox-btn">
+            <input type="checkbox" id="adv1" class="falloutchkbx"><span>|Adventure Tone|</span>
+          </label>
+          <label class="checkbox-btn">
+            <input type="checkbox" id="adv2" class="falloutchkbx"><span>|Alien Species Descriptor|</span>
+          </label>
+          <label class="checkbox-btn">
+            <input type="checkbox" id="adv3" class="falloutchkbx">
+            <span>|Animal Actions|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv4" class="falloutchkbx">
+            <span>|Army Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv5" class="falloutchkbx">
+            <span>|Cavern Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv49" class="falloutchkbx">
+            <span>|Character, General|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv6" class="falloutchkbx">
+            <span>|Character Actions, Combat|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv7" class="falloutchkbx">
+            <span>|Character Actions, General|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv8" class="falloutchkbx">
+            <span>|Character Appearance|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv9" class="falloutchkbx">
+            <span>|Character Background|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv10" class="falloutchkbx">
+            <span>|Character Conversations|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv11" class="falloutchkbx">
+            <span>|Character Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv12" class="falloutchkbx">
+            <span>|Character Identity|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv13" class="falloutchkbx">
+            <span>|Character Motivations|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv14" class="falloutchkbx">
+            <span>|Character Personality|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv15" class="falloutchkbx">
+            <span>|Character Skills|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv16" class="falloutchkbx">
+            <span>|Character Traits And Flaws|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv17" class="falloutchkbx">
+            <span>|City Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv18" class="falloutchkbx">
+            <span>|Civilization Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv19" class="falloutchkbx">
+            <span>|Creature Abilities|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv20" class="falloutchkbx">
+            <span>|Creature Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv21" class="falloutchkbx">
+            <span>|Cryptic Message|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv22" class="falloutchkbx">
+            <span>|Curses|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv47" class="falloutchkbx">
+            <span>|Descriptors, General 1|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv48" class="falloutchkbx">
+            <span>|Descriptors, General 2|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv23" class="falloutchkbx">
+            <span>|Domicile Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv24" class="falloutchkbx">
+            <span>|Dungeon Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv25" class="falloutchkbx">
+            <span>|Dungeon Traps|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv26" class="falloutchkbx">
+            <span>|Forest Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv27" class="falloutchkbx">
+            <span>|Gods|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv28" class="falloutchkbx">
+            <span>|Legends|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv29" class="falloutchkbx">
+            <span>|Locations|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv30" class="falloutchkbx">
+            <span>|Magic Item Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv31" class="falloutchkbx">
+            <span>|Mutation Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv32" class="falloutchkbx">
+            <span>|Names|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv33" class="falloutchkbx">
+            <span>|Noble House|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv34" class="falloutchkbx">
+            <span>|Objects|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv35" class="falloutchkbx">
+            <span>|Plot Twists|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv36" class="falloutchkbx">
+            <span>|Powers|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv37" class="falloutchkbx">
+            <span>|Scavenging Results|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv38" class="falloutchkbx">
+            <span>|Smells|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv39" class="falloutchkbx">
+            <span>|Sounds|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv40" class="falloutchkbx">
+            <span>|Spell Effects|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv41" class="falloutchkbx">
+            <span>|Starship Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv42" class="falloutchkbx">
+            <span>|Terrain Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv43" class="falloutchkbx">
+            <span>|Undead Descriptors|</span>
+        </label>
+        <label class="checkbox-btn">
+            <input type="checkbox" id="adv44" class="falloutchkbx">
+            <span>|Visions And Dreams|</span>
+        </label>
+        _____________________________________________________
+          <button class="falloutbtn" onclick="setDesc()">[PROCEED]</button> <button class="falloutbtn" onclick="selectAll()">[SELECT ALL]</button> <button class="falloutbtn" onclick="unselectAll()">[UNSELECT ALL]</button> <button class="falloutbtn" onclick="tickSpecified('char')">[CHARACTER FOCUS]</button>
         </div>
         <div class="dropdown-kuno" id="odd-selection">
           <ul>
@@ -153,6 +363,17 @@
           </li>
           <li>
             <button class="falloutbtn" onclick="setRadio('Other Radio')">Other Radio</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dropdown-kuno" id="scene-selection">
+        <ul>
+          <li>
+            <button class="falloutbtn" onclick="setScene('own')">I'm playing my own adventure.</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="setScene('premade')">I'm playing a pre-made adventure.</button>
           </li>
         </ul>
       </div>

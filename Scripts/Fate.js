@@ -165,6 +165,7 @@
                     } 
                 catch (error) {
                         document.getElementById('answer').innerText = "I can't tell you anything right now. ***you need to set Odd and Chaos Factor for Y/N questions.***";
+                        document.getElementById('event').innerText = "";
                         nothingVoice()
                     }
             }
@@ -175,19 +176,33 @@
                 }
                 catch (error) {
                     document.getElementById('answer').innerText = "I can't tell you anything right now.";
+                    document.getElementById('event').innerText = "";
+                    nothingVoice()
+            }
+            }
+            else if (document.getElementById('selected-q').innerHTML.includes('Adv.')) {
+                try {
+                    describe();
+                    console.log(adv_desc);
+                }
+                catch (error) {
+                    document.getElementById('answer').innerText = "I can't tell you anything right now.";
+                    document.getElementById('event').innerText = "";
                     nothingVoice()
             }
             }
 
             else {
                 document.getElementById('answer').innerText = "I can't tell you anything right now. **set Question first**";
-            nothingVoice()
+                document.getElementById('event').innerText = "";
+                nothingVoice()
             };
          }
                 
                 
         catch (error) {
             document.getElementById('answer').innerText = "I can't tell you anything right now.";
+            document.getElementById('event').innerText = "";
             nothingVoice()
         }
            

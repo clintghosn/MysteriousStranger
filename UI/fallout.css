@@ -31,7 +31,7 @@ body {
     right: 50px;
 }
 
-.button {
+.button, .falloutchkbx {
     background-color: #333;
     border: none;
     /* color: white; */
@@ -64,20 +64,82 @@ body {
     font-family:'Fira Mono', monospace;
     animation:colorPulse 5s infinite ease-in-out;
     cursor: url('fallout_fat.cur'), auto;
-    font-size: 15.5px;
+    font-size: 14.5px;
 }
 
 .falloutbtn:hover {
-    font-size: 16.5px;
+    font-size: 15.5px;
     font-style: bold;
     animation:colorPulse2 5s infinite ease-in-out;
 }
+
+.checkbox-btn {
+    display: inline-flex;
+    align-items: left;
+    cursor: pointer;
+    user-select: none;
+    /* padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 5px; */
+    /* background-color: #555; */
+    /* color: #fff; */
+    font-family:'Fira Mono', monospace;
+    animation:colorPulse 5s infinite ease-in-out;
+    cursor: url('fallout_fat.cur'), auto;
+    font-size: 14px;
+    /* transition: background-color 0.2s, transform 0.2s; */
+}
+
+.checkbox-btn input[type="checkbox"] {
+    display: none; /* Hide the default checkbox */
+}
+
+.checkbox-btn span {
+    margin-left: 0px; /* Space between checkbox and label text */
+}
+
+.checkbox-btn input[type="checkbox"]:checked + span {
+    font-family:'Fira Mono', monospace;
+    animation:colorPulse 5s infinite ease-in-out;
+    background-color: #314200; 
+    /* transform: translateY(2px); Simulate pressed down */
+}
+
+
+
+/* .falloutchkbx {
+    margin: 0;
+    border: none;
+    background: none;
+    font-family:'Fira Mono', monospace;
+    animation:colorPulse 5s infinite ease-in-out;
+    cursor: url('fallout_fat.cur'), auto;
+    font-size: 14.5px;
+} */
+
+/* .falloutchckbx:hover {
+    font-size: 15.5px;
+    font-style: bold;
+    animation:colorPulse2 5s infinite ease-in-out;
+} */
 
 .dropdown-kuno {
     position: relative;
     display: none;
     height: 160px;
     width: 600px;
+    overflow-y: auto;
+}
+
+.dropdown-kuno2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: none;
+    height: 160px;
+    width: 595px;
     overflow-y: auto;
 }
 ::-webkit-scrollbar {
@@ -128,12 +190,11 @@ ul li::before {
     top: 395px;
     left: 235px;
     font-family:'Fira Mono', monospace;
-    /* color: green; */
     font-size: 12.5px;
     width: 570px;
     height: 54px;
     animation:colorPulse 5s infinite ease-in-out;
-    /* border: 1px solid blue; */
+    overflow-y: scroll;
 }
 
 input {

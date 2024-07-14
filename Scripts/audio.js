@@ -202,7 +202,17 @@ function on_off () {
 }
 
 function silence() {
-    document.getElementById('noise').play()
-    document.getElementById('answer').innerHTML = `.... `;
-    document.getElementById('event').innerHTML = ` `;
-}
+    document.getElementById('noise').play();
+
+    if (selectedCF !='') {
+        document.getElementById('answer').innerHTML = `.... `;
+        document.getElementById('event').innerHTML = ` `;
+        openDropdown('scene-selection');
+    }
+    else {
+
+        document.getElementById('answer').innerHTML = `.... **set Chaos Factor first**`;
+        document.getElementById('event').innerHTML = ` `;
+        
+    };
+    }
