@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Mysterious Stranger</title>
-<script src="Scripts/Stranger/Fate.js"></script>
-<script src="Scripts/Stranger/Meaning.js"></script>
-<script src="Scripts/Stranger/script.js"></script>
-<script src="Scripts/Stranger/audio.js"></script>
+<title>The (game)Master</title>
+<script src="Scripts/Master/master_Fate.js"></script>
+<script src="Scripts/Master/master_Meaning.js"></script>
+<script src="Scripts/Master/master_script.js"></script>
+<script src="Scripts/Master/master_audio.js"></script>
 <script src="Scripts/Descriptors_List.js"></script>
 <script src="Scripts/EventListeners.js"></script>
 <link rel="stylesheet" href="UI/fallout.css">
@@ -15,12 +15,13 @@
 <audio id="type1" src="Audio/Effects/type_1.wav" preload="auto"></audio>
 <audio id="encounter" src="Audio/Effects/encounter.mp3" preload="auto"></audio>
 <audio id="radioButton" src="Audio/Effects/button.wav" preload="auto"></audio>
-<audio id="nothing" src="Audio/Voice/Stranger/nothing.mp3" preload="auto"></audio>
-<audio id="yes" src="Audio/Voice/Stranger/Yes.mp3" preload="auto"></audio>
-<audio id="no" src="Audio/Voice/Stranger/No.mp3" preload="auto"></audio>
-<audio id="exc_yes" src="Audio/Voice/Stranger/Exc_Yes.mp3" preload="auto"></audio>
-<audio id="exc_no" src="Audio/Voice/Stranger/Exc_No.mp3" preload="auto"></audio>
-<audio id="someDetails" src="Audio/Voice/Stranger/someDetails.mp3" preload="auto"></audio>
+<audio id="nothing" src="Audio/Voice/Master/master_nothing.mp3" preload="auto"></audio>
+<audio id="so" src="Audio/Voice/Master/whatShallitBe.mp3" preload="auto"></audio>
+<audio id="yes" src="Audio/Voice/Master/master_Yes.mp3" preload="auto"></audio>
+<audio id="no" src="Audio/Voice/Master/master_No.mp3" preload="auto"></audio>
+<audio id="exc_yes" src="Audio/Voice/Master/master_Exc_Yes.mp3" preload="auto"></audio>
+<audio id="exc_no" src="Audio/Voice/Master/master_Exc_No.mp3" preload="auto"></audio>
+<audio id="someDetails" src="Audio/Voice/Master/master_someDetails.mp3" preload="auto"></audio>
 <audio id="noise" src="Audio/Voice/noise.mp3" preload="auto"></audio>
 <audio id="radioNewVegas" src = "Audio/Radio/NV/Radio New Vegas.mp3" preload="auto"></audio>
 <audio id="radioDiamondCity" src = "Audio/Radio/DCR/Diamond City Radio.mp3" preload="auto"></audio>
@@ -33,7 +34,7 @@
     <div class="screen">
       <div id="CRT">
         <div id="MS0"></div>
-        <img id="MS" src="UI/Stranger/MS.png" width="100%">
+        <img id="MS" src="UI/Master/Master.png" width="100%">
       </div>
         <img src="UI/Pipboy.png" alt="Pipboy" width="100%">
     </div>
@@ -61,7 +62,7 @@
           <button class="falloutbtn" onclick="openDropdown('radio-selection')">[Set Radio] <span id="selected-radio"></span></button> <br/>
         </li>
         <li>
-          <button class="falloutbtn" onclick="TellMe()">Tell me Stranger.</button> <br/>
+          <button class="falloutbtn" onclick="TellMe()">Tell me Master.</button> <br/>
         </li>
         <li>
           <button class="falloutbtn" onclick="silence()">I want to test my expected Scene.</button><br>

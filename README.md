@@ -4,26 +4,37 @@ NOTES:
 
 COMPATIBILITY:
 1. Only compatible with PC browser (Chrome and Edge).
-2 My Display Resolution when making this: 1920 x 1800 and Scale of 150%.
+2. My Display Resolution when making this: 1920 x 1800 and Scale of 150%.
 ---
 
 HOW TO USE:
-1. Open the HTML file with a browser.
+1. Open the HTML file with a browser (you have 2 options: MysteriousStranger and THEgameMASTER).
 2. Use Full Screen for better experience (F11).
 3. Set a Question: the input is optional and only for your reference/notes, choose between YES/NO or DESCRIPTION.
 4. If you chose DESCRIPTION, then you can now select "Tell me Stranger" to get a result (more on results later).
 5. If you chose YES/NO, then you need to set Odd and Chaos Factor before selecting "Tell me Stranger".
 6. You can turn on the radio and listen to 4 radio stations. Only at 1st instance:
 	6.a. If you select a radio station before turning on the radio: the station will play songs from the start of the track.
-	6.b: If you turn on the radio before selecting a radio station: the station will play songs randomly.
+	6.b. If you turn on the radio before selecting a radio station: the station will play songs randomly.
 ---
 
 HIGH LEVEL GUIDE:
 1. Odds: odds are based on how likely your question will happen based on your current situation/location/scenario. Ex. 'Will I find a Deathclaw?' when you are in a settlement is Nearly Impossible.
 2. Chaos Factor (CF): Default it to 5 if you do not get it yet. CF is based on how calm or busy your previous scene was, if you were in control then decrease CF by 1, if you were not and things were wild then increase CF by 1. The lower the CF the higher chance of No, the higher the CF the higher chance of Yes.
 3. Events: Sometimes events will interrupt your normal flow, check the Focus for the target of the event ex. 'PC Positive' means something good happens to your character. Before hovering on the spoiler tags, pick 1 option 1st from (Action, Descriptor, Location, Character, Object) whichever you prefer, this is just to give you pair of words for you to interpret, you are free to choose more than 1 especially when lost in interpretation.
-4. Yes/No: YN question is when you want a yes or no answer, connected to Odds and CF, ex. Is the door locked?.
+4. Yes/No: YN question is when you want a yes or no answer, connected to Odds and CF, ex. Is the door unlocked? (try to frame your question as a positive, but still up to you on what works).
+	4.a. samples:
+		-Am I safe?
+		-Is there a purified water here?
+		-Is the next settlement near?
+		-Is the weather good?
+		-Are the raiders afraid of me?
 5. Description: Descr is when you want to interpret something, outside of YN, ex. Who/What is behind the door?.
+	5.a. more samples:
+		-What happened to me?
+		-What is that location over there?
+		-What is happening inside that big hole?
+		-What news did I hear in the radio?
 ---
 
 LIST OF POSSIBLE FOCUS (with help from ChatGPTo):

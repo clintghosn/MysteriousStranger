@@ -8,29 +8,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// // for radio
-// document.addEventListener('DOMContentLoaded', function() {
-    
-//     var radioBtn = document.getElementById("radio-button");
-//     radioBtn.addEventListener('click', radioButtonSound)
-// });
-
-//for input field
-document.addEventListener('DOMContentLoaded', function() {
-    var inputField = document.getElementById('q');
-    var audio = document.getElementById("type1");
-
-    inputField.addEventListener('input', inputSound)
-    // //Enter press
-    // inputField.addEventListener('keydown', function(event) {
-    //     // Check if the key pressed was the Enter key
-    //     if (event.key === "Enter" || event.keyCode === 13) {
-    //         setQ()
-    //         inputSound()
-    //     }
-    // });
-});
-// q.addEventListener('input', inputSound);
+function so() {
+    var audio = document.getElementById("so");
+    audio.play();
+    document.getElementById("answer").innerText = "..So what shall it be?";
+    document.getElementById("event").innerText = "";
+}
 
 function clickSound () {
     var audio = document.getElementById("click1");
@@ -52,7 +35,8 @@ function encounterSound () {
     //delayed start
     setTimeout(function() {
         audio.play();
-    }, 1500);
+    }, 2200);
+    audio.volume = 0.1;
 }
 
 function nothingVoice () {
@@ -97,7 +81,7 @@ function playRadio(radio) {
         audio.currentTime = randomStartTime;
         audio.loop = true;
         // set volume
-        audio.volume = 0.2;
+        audio.volume = 0.1;
         //stop other audios
         document.getElementById("radioNewVegas").pause();
         document.getElementById("radioDiamondCity").pause();
@@ -111,7 +95,7 @@ function playRadio(radio) {
         audio.currentTime = randomStartTime;
         audio.loop = true;
         // set volume
-        audio.volume = 0.2;
+        audio.volume = 0.1;
         // stop other audios
         document.getElementById("radioGalaxyNews").pause();
         document.getElementById("radioDiamondCity").pause();
@@ -125,7 +109,7 @@ function playRadio(radio) {
         audio.currentTime = randomStartTime;
         audio.loop = true;
         // set volume
-        audio.volume = 0.2;
+        audio.volume = 0.1;
         // stop other audios
         document.getElementById("radioGalaxyNews").pause();
         document.getElementById("radioNewVegas").pause();
@@ -139,7 +123,7 @@ function playRadio(radio) {
         audio.currentTime = randomStartTime;
         audio.loop = true;
         // set volume
-        audio.volume = 0.6;
+        audio.volume = 0.3;
         // stop other audios
         document.getElementById("radioGalaxyNews").pause();
         document.getElementById("radioNewVegas").pause();
@@ -160,25 +144,25 @@ function on_off () {
             if (selectedRadio == 'Galaxy News Radio') {
                 var audio = document.getElementById("radioGalaxyNews");
                 audio.play();
-                audio.volume = 0.2;
+                audio.volume = 0.1;
                 audio.loop = true;
             }
             else if (selectedRadio == 'Radio New Vegas') {
                 var audio = document.getElementById("radioNewVegas");
                 audio.play();
-                audio.volume = 0.2;
+                audio.volume = 0.1;
                 audio.loop = true;
             }
             else if (selectedRadio == 'Diamond City Radio') {
                 var audio = document.getElementById("radioDiamondCity");
                 audio.play();
-                audio.volume = 0.2;
+                audio.volume = 0.1;
                 audio.loop = true;
             }
             else if (selectedRadio == 'Other Radio') {
                 var audio = document.getElementById("radioOther");
                 audio.play();
-                audio.volume = 0.6;
+                audio.volume = 0.3;
                 audio.loop = true;
             }
             else {''}
