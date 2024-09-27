@@ -107,7 +107,7 @@ function playRadio(radio) {
         audio.currentTime = randomStartTime;
         audio.loop = true;
         // set volume
-        audio.volume = 0.2;
+        audio.volume = 0.4;
         //stop other audios
         document.getElementById("radioNewVegas").pause();
         document.getElementById("radioDiamondCity").pause();
@@ -121,7 +121,7 @@ function playRadio(radio) {
         audio.currentTime = randomStartTime;
         audio.loop = true;
         // set volume
-        audio.volume = 0.2;
+        audio.volume = 0.4;
         // stop other audios
         document.getElementById("radioGalaxyNews").pause();
         document.getElementById("radioDiamondCity").pause();
@@ -135,7 +135,7 @@ function playRadio(radio) {
         audio.currentTime = randomStartTime;
         audio.loop = true;
         // set volume
-        audio.volume = 0.2;
+        audio.volume = 0.4;
         // stop other audios
         document.getElementById("radioGalaxyNews").pause();
         document.getElementById("radioNewVegas").pause();

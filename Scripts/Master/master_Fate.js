@@ -191,6 +191,88 @@
                     nothingVoice()
             }
             }
+            // Random Question
+            else if (document.getElementById('selected-q').innerHTML.includes('Random Q')) {
+                try {
+                    try {
+                       // Concatenate the selected values
+                       var CF_Odd = selectedCF + "_" + selectedOdd;
+
+                       // Generate a random number between 1 and 100
+                       var D10_tens = Math.floor(Math.random() * 10);
+                       var D10_ones = Math.floor(Math.random() * 10);
+                       var D100;
+                       //Get the total
+                       if(((D10_tens*10)+D10_ones) == 0) {
+                           D100 = 100
+                       }
+                       else {
+                           D100 = (D10_tens*10)+D10_ones
+                       }
+                       //Check for doubles
+                       var isEvent = false;
+   
+                       if (D10_tens == D10_ones) {
+                           if (D10_tens <= selectedCF) {
+                               isEvent = true
+                           }
+                       }
+                       else {
+                           evnt = ``;
+                       }
+   
+                       var specificArray = arrays[CF_Odd];
+   
+                       // Accessing elements inside "9_Impossible" array
+                       var left = specificArray[0];
+                       var mid = specificArray[1];
+                       var right = specificArray[2];
+   
+                       var ans = 'I would say ';
+   
+                       if (D100 <= left) {
+                           ans = ans+'Excellent! **Exceptional Yes**'
+                           exc_yesVoice();
+                       }
+                       else if (D100 > left && D100 <= mid) {
+                           ans = ans+'Yes.'
+                           yesVoice();
+                       }
+                       else if (D100 > mid && D100 < right) {
+                           ans = ans+'No.'
+                           noVoice();
+                       }
+                       else if (D100 >= right) {
+                           ans = ans+'Preposterous!! **Exceptional No**'
+                           exc_noVoice();
+                       }
+                       else {
+                           "..."
+                       }
+   
+                       //call the event
+                       if (isEvent == true) {
+                           var script = document.createElement('script');
+                           script.src = 'Meaning.js';
+                           callOut2();
+                           encounterSound();
+                       }
+                    
+                       getDetails();
+                       // Display the result
+                       document.getElementById('event').innerHTML = `${ans} </br> ${evnt} </br> ${details}`;
+               
+                       } 
+                   catch (error) {
+                           document.getElementById('event').innerText = "***you need to set Odd and Chaos Factor for Y/N questions.***";
+                           nothingVoice()
+                       }
+                }
+                catch (error) {
+                    document.getElementById('answer').innerText = "I am the Master, I do not have to answer to you.";
+                    document.getElementById('event').innerText = "";
+                    nothingVoice()
+        }}
 
             else {
                 document.getElementById('answer').innerText = "**set Question first**";

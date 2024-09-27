@@ -3,14 +3,42 @@ var selectedCF = '';
 var selectedQ = '';
 
 function openDropdown(id) {
+    if (id == 'more-selection' && selectedCF < 1) {
+        document.getElementById('answer').innerHTML = `.... **set Chaos Factor first**
+        </br> **Chaos Factor is also your Progress Point (PP) for Mythic LC, among other things**`;
+        document.getElementById('event').innerHTML = ` `;
+        document.getElementById('noise').play();
+    }
+    else if (id == 'more-selection' && selectedCF >= 1) {
+        document.getElementById('answer').innerHTML = `.....`;
+        document.getElementById('event').innerHTML = ``;
+        var element = document.getElementById(id);
+        element.style.display = 'block';
+        document.getElementById('main').style.display = 'none';
+        document.getElementById('noise').play();
+    }
+    
+    else {
+        
+        var element = document.getElementById(id);
+        element.style.display = 'block';
+        document.getElementById('main').style.display = 'none';
+        
+        if (id == 'q-selection') {
+            document.getElementById('q').focus();
+            so();
+        }
+    }
+
+}
+
+function openLocation(id) {
     var element = document.getElementById(id);
     element.style.display = 'block';
-    document.getElementById('main').style.display = 'none';
-
-    if (id == 'q-selection') {
-        document.getElementById('q').focus();
-        so();
-    }
+    document.getElementById('more-selection').style.display = 'none';
+    document.getElementById('noise').play();
+    document.getElementById('answer').innerHTML = '....';
+    document.getElementById('event').innerHTML = '';
 }
 
 function openCheckbox(id) {
@@ -49,12 +77,20 @@ function setCF(cf) {
 }
 
 function setRadio(radio) {
-    selectedRadio = radio;
-    var element = document.getElementById('radio-selection');
-    element.style.display = 'none';
-    document.getElementById('main').style.display = 'block';
-    document.getElementById('selected-radio').innerHTML = '('+ selectedRadio +')';
-    playRadio(radio);
+    if (radio == 'radio-selection') {
+        document.getElementById(radio).style.display = 'none';
+        document.getElementById('main').style.display = 'block';
+        document.getElementById('answer').innerHTML = '';
+        document.getElementById('event').innerHTML = '';
+    }
+    else {
+        selectedRadio = radio;
+        var element = document.getElementById('radio-selection');
+        element.style.display = 'none';
+        document.getElementById('main').style.display = 'block';
+        document.getElementById('selected-radio').innerHTML = '('+ selectedRadio +')';
+        playRadio(radio);
+    }
 }
 
 function setQ_yn() {
@@ -132,7 +168,9 @@ function setDesc() {
     });
     console.log(selectedDesc); // Changed from spanText to selectedDesc
     var element = document.getElementById('adv-selection');
+    // var element2 = document.getElementById('adv_UNE-selection');
     element.style.display = 'none';
+    // element2.style.display = 'none';
     document.getElementById('main').style.display = 'block';
     getDesc(selectedDesc);
 }
@@ -539,10 +577,10 @@ function getDesc(arrayDesc) {
     })
 };
 
-function selectAll(){
-   var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-   checkboxes.forEach(function(checkbox) {
-   checkbox.checked = true;
+function selectAll(divId){
+    var checkboxes = document.querySelectorAll('#' + divId + ' input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = true;
     });
 }
 

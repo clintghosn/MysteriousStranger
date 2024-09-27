@@ -71,6 +71,7 @@ function sceneAdj() {
 }
 
 function describe(){
+            setDesc();
             let eventHTML = '';
             if (adv_desc && Object.keys(adv_desc).length > 0) {
 

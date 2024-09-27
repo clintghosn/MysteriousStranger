@@ -75,12 +75,20 @@ function sceneAdj() {
 }
 
 function describe(){
+            setDesc();
             let eventHTML = '';
             if (adv_desc && Object.keys(adv_desc).length > 0) {
 
                 for (let key in adv_desc) {
                     if (Array.isArray(adv_desc[key])) {
-                        eventHTML += `${key}: ${adv_desc[key].join(', ')}<br/>`;
+                        if (key == 'npcModifier') {
+
+                            eventHTML += `The NPC is a/n: ${adv_desc[key].join(', ')}<br/>`;
+                        }
+                        else {
+
+                            eventHTML += `${key}: ${adv_desc[key].join(', ')}<br/>`;
+                        }
                     }
                 }
                 document.getElementById('answer').innerText ='One moment...';

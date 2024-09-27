@@ -5,7 +5,8 @@ var descriptor;
 var loc;
 var char;
 var obj;
-
+var npcRel;
+var npcConvMood;
 
 var focus = [
     "Remote Event","Remote Event","Remote Event","Remote Event","Remote Event",
@@ -679,5 +680,97 @@ var advancedDesc = {
             "Power", "Preventable", "Reassuring", "Riches", "Riddle", "Ruin", "Scary", "Simple", "Strange", "Struggle",
             "Success", "Suffering", "Suppress", "Tension", "Threat", "Time", "Travel", "Trouble", "Trust", "Uncertain",
             "Unsettling", "Violence", "Warning", "Weapon"
+          ],
+///////UNE
+          "npcModifier": [
+            "a superfluous", "an inept", "a pleasant", "a lethargic", "a jovial",
+            "an addicted", "a banal", "an insensitive", "a defiant", "a shrewd",
+            "a conformist", "a logical", "a titled", "an obnoxious", "a liberal",
+            "a nefarious", "a subtle", "an inexperienced", "an insightful", "a compliant",
+            "a sensible", "a reputable", "a prying", "a tactless", "a destitute",
+            "an untrained", "a wicked", "an oblivious", "a fanatic", "a conniving",
+            "a romantic", "a lazy", "a refined", "a plebeian", "a careful",
+            "an unreasonable", "a pessimistic", "an indispensable", "a childish", "an alluring",
+            "a skilled", "a solemn", "a scholarly", "a pious", "a defective",
+            "a neglectful", "a habitual", "a conservative", "an uneducated", "an optimistic",
+            "a lively", "a meek", "an uncouth", "an inconsiderate", "an affluent",
+            "a forthright", "a helpful", "a willful", "a cultured", "a despondent",
+            "an idealistic", "an unconcerned", "an indifferent", "a revolting", "a mindless",
+            "an unsupportive", "a generous", "a fickle", "a curious", "a passionate",
+            "a rational", "a docile", "an elderly", "a touchy", "a devoted",
+            "a coarse", "a cheery", "a sinful", "a needy", "an established",
+            "a foolish", "a pragmatic", "a naive", "a dignified", "an unseemly",
+            "a cunning", "a serene", "a privileged", "a pushy", "a dependable",
+            "a delightful", "a thoughtful", "a glum", "a kind", "a righteous",
+            "a miserly", "a hopeless", "a likable", "a corrupt", "a confident"
+          ],
+          
+          "npcNoun": [
+            "gypsy", "missionary", "villager", "mediator", "performer",
+            "witch", "outcast", "magus", "crook", "magister",
+            "merchant", "mercenary", "conscript", "civilian", "serf",
+            "expert", "caretaker", "worker", "activist", "brute",
+            "commoner", "hermit", "actor", "hero", "inquisitor",
+            "judge", "orator", "herald", "champion", "lord",
+            "ranger", "chieftain", "highwayman", "cleric", "villain",
+            "occultist", "pioneer", "fortune-hunter", "slave", "professor",
+            "reverend", "burglar", "governor", "gunman", "servant",
+            "thug", "vicar", "scrapper", "clairvoyant", "charmer",
+            "drifter", "officer", "monk", "patriarch", "globetrotter",
+            "journeyman", "explorer", "homemaker", "shopkeeper", "sniper",
+            "statesman", "warden", "recluse", "crone", "courtier",
+            "astrologer", "outlaw", "steward", "adventurer", "priest",
+            "duelist", "adept", "polymath", "soldier", "tradesman",
+            "jack-of-all-trades", "bum", "magician", "entertainer", "hitman",
+            "aristocrat", "sorcerer", "traveler", "craftsman", "wizard",
+            "preacher", "laborer", "vagrant", "scientist", "beggar",
+            "artisan", "master", "apprentice", "ascetic", "tradesman",
+            "rogue", "ascendant", "politician", "superior", "warrior"
+          ],
+          
+          "npcMotivation_Verb": [
+            "advise", "shepherd", "take", "work", "manage",
+            "obtain", "abuse", "discover", "accompany", "suppress",
+            "attempt", "indulge in", "deter", "offend", "proclaim",
+            "spoil", "chronicle", "acquire", "guide", "operate",
+            "oppress", "fulfill", "damage", "learn", "access",
+            "interact", "drive", "publicize", "persecute", "refine",
+            "create", "review", "burden", "communicate", "compose",
+            "abduct", "aid", "advocate", "process", "undermine",
+            "promote", "follow", "implement", "report", "explain",
+            "conceive", "advance", "understand", "develop", "discourage",
+            "blight", "guard", "collaborate", "steal", "attend",
+            "progress", "conquer", "strive", "suggest", "detect",
+            "distress", "hinder", "complete", "weaken", "execute",
+            "possess", "plunder", "compel", "achieve", "maintain",
+            "record", "construct", "join", "secure", "realize",
+            "embrace", "encourage", "assist", "inform", "convey",
+            "contact", "agonize", "defile", "patronize", "rob",
+            "pursue", "comprehend", "produce", "depress", "establish",
+            "associate", "administer", "institute", "determine", "overthrow",
+            "prepare", "relate", "account", "seek", "support"
+          ],
+          
+          "npcMotivation_Noun": [
+            "wealth", "the wealthy", "dreams", "gluttony", "advice",
+            "hardship", "the populous", "discretion", "lust", "propaganda",
+            "affluence", "enemies", "love", "envy", "science",
+            "resources", "the public", "freedom", "greed", "knowledge",
+            "prosperity", "religion", "pain", "laziness", "communications",
+            "poverty", "the poor", "faith", "wrath", "lies",
+            "opulence", "family", "slavery", "pride", "myths",
+            "deprivation", "the elite", "enlightenment", "purity", "riddles",
+            "success", "academia", "racism", "moderation", "stories",
+            "distress", "the forsaken", "sensuality", "vigilance", "legends",
+            "contraband", "the law", "dissonance", "zeal", "industry",
+            "music", "the government", "peace", "composure", "new religions",
+            "literature", "the oppressed", "discrimination", "charity", "progress",
+            "technology", "friends", "disbelief", "modesty", "animals",
+            "alcohol", "criminals", "pleasure", "atrocities", "ghosts",
+            "medicines", "allies", "hate", "cowardice", "magic",
+            "beauty", "secret societies", "happiness", "narcissism", "nature",
+            "strength", "the world", "servitude", "compassion", "old religions",
+            "intelligence", "military", "harmony", "valor", "expertise",
+            "force", "the church", "justice", "patience", "spirits"
           ]
 };

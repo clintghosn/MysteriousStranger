@@ -177,7 +177,7 @@ ul li::before {
     font-family:'Fira Mono', monospace;
     /* color: green; */
     font-size: 14px;
-    width: 570px;
+    width: 568px;
     height: 24px;
     /* border: 1px solid white; */
     animation:colorPulse 5s infinite ease-in-out;

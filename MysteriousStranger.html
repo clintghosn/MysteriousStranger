@@ -8,8 +8,18 @@
 <script src="Scripts/Stranger/Meaning.js"></script>
 <script src="Scripts/Stranger/script.js"></script>
 <script src="Scripts/Stranger/audio.js"></script>
+<script src="Scripts/npc.js"></script>
 <script src="Scripts/Descriptors_List.js"></script>
 <script src="Scripts/EventListeners.js"></script>
+<script src="Scripts/Tables_OtherDust.js"></script>
+<script src="Scripts/Tables_MythicLocationCrafter.js"></script>
+<script src="Scripts/Tables_PostApocEncounters.js"></script>
+<script src="Scripts/Tables_DevilsRun.js"></script>
+<script src="Scripts/Tables_PUM.js"></script>
+<script src="Scripts/Tables_MYZ.js"></script>
+<script src="Scripts/Tables_Questions.js"></script>
+<script src="Scripts/location.js"></script>
+<script src="Scripts/universalScript.js"></script>
 <link rel="stylesheet" href="UI/fallout.css">
 <audio id="click1" src="Audio/Effects/click_1.wav" preload="auto"></audio>
 <audio id="type1" src="Audio/Effects/type_1.wav" preload="auto"></audio>
@@ -17,6 +27,7 @@
 <audio id="radioButton" src="Audio/Effects/button.wav" preload="auto"></audio>
 <audio id="nothing" src="Audio/Voice/Stranger/nothing.mp3" preload="auto"></audio>
 <audio id="yes" src="Audio/Voice/Stranger/Yes.mp3" preload="auto"></audio>
+
 <audio id="no" src="Audio/Voice/Stranger/No.mp3" preload="auto"></audio>
 <audio id="exc_yes" src="Audio/Voice/Stranger/Exc_Yes.mp3" preload="auto"></audio>
 <audio id="exc_no" src="Audio/Voice/Stranger/Exc_No.mp3" preload="auto"></audio>
@@ -64,7 +75,10 @@
           <button class="falloutbtn" onclick="TellMe()">Tell me Stranger.</button> <br/>
         </li>
         <li>
-          <button class="falloutbtn" onclick="silence()">I want to test my expected Scene.</button><br>
+          <button class="falloutbtn" onclick="silence()">I want to know more about Scenes.</button><br>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="openDropdown('more-selection')">I want to know more things.</button><br>
         </li>
         <li>
         <button class="falloutbtn" onclick="Exit()">Goodbye for now.</button>
@@ -78,16 +92,19 @@
               <button class="falloutbtn" onclick="setQ_yn()">YES/NO</button><br/>
             </li>
             <li>
-              <button class="falloutbtn" onclick="setQ_desc()">DESCRIPTION</button>
+              <button class="falloutbtn" onclick="setQ_desc()">DESCRIPTION (Mythic Default)</button>
             </li>
             <li>
-              <button class="falloutbtn" onclick="openCheckbox('adv-selection')">ADVANCED DESCRIPTIONS<span id="selected-radio"></span></button>
+              <button class="falloutbtn" onclick="openCheckbox('adv-selection')">ADVANCED DESCRIPTIONS (Mythic)</button>
+            </li>
+            <li>
+              <button class="falloutbtn" onclick="openDropdown2('randomQ-selection')">RANDOM QUESTION</button>
             </li>
           </ul>
         </div>
         
         <div class="dropdown-kuno2" id="adv-selection">
-          <button class="falloutbtn" onclick="setDesc()">[PROCEED]</button> <button class="falloutbtn" onclick="selectAll()">[SELECT ALL]</button> <button class="falloutbtn" onclick="unselectAll()">[UNSELECT ALL]</button> <button class="falloutbtn" onclick="tickSpecified('char')">[CHARACTER FOCUS]</button>
+          <button class="falloutbtn" onclick="setDesc()">[PROCEED]</button> <button class="falloutbtn" onclick="selectAll('adv-selection')">[SELECT ALL]</button> <button class="falloutbtn" onclick="unselectAll()">[UNSELECT ALL]</button> <button class="falloutbtn" onclick="tickSpecified('char')">[CHARACTER FOCUS]</button>
           _____________________________________________________
           <label class="checkbox-btn">
             <input type="checkbox" id="adv45" class="falloutchkbx"><span>|Actions, General 1|</span>
@@ -282,7 +299,7 @@
             <span>|Visions And Dreams|</span>
         </label>
         _____________________________________________________
-          <button class="falloutbtn" onclick="setDesc()">[PROCEED]</button> <button class="falloutbtn" onclick="selectAll()">[SELECT ALL]</button> <button class="falloutbtn" onclick="unselectAll()">[UNSELECT ALL]</button> <button class="falloutbtn" onclick="tickSpecified('char')">[CHARACTER FOCUS]</button>
+          <button class="falloutbtn" onclick="setDesc()">[PROCEED]</button> <button class="falloutbtn" onclick="selectAll('adv-selection')">[SELECT ALL]</button> <button class="falloutbtn" onclick="unselectAll()">[UNSELECT ALL]</button> <button class="falloutbtn" onclick="tickSpecified('char')">[CHARACTER FOCUS]</button>
         </div>
         <div class="dropdown-kuno" id="odd-selection">
           <ul>
@@ -353,16 +370,22 @@
       <div class="dropdown-kuno" id="radio-selection">
         <ul>
           <li>
-            <button class="falloutbtn" onclick="setRadio('Galaxy News Radio')">Galaxy News Radio</button>
+            <button class="falloutbtn" onclick="setRadio('Galaxy News Radio')">[Galaxy News Radio]</button>
           </li>
           <li>
-            <button class="falloutbtn" onclick="setRadio('Radio New Vegas')">Radio New Vegas</button>
+            <button class="falloutbtn" onclick="setRadio('Radio New Vegas')">[Radio New Vegas]</button>
           </li>
           <li>
-            <button class="falloutbtn" onclick="setRadio('Diamond City Radio')">Diamond City Radio</button>
+            <button class="falloutbtn" onclick="setRadio('Diamond City Radio')">[Diamond City Radio]</button>
           </li>
           <li>
-            <button class="falloutbtn" onclick="setRadio('Other Radio')">Other Radio</button>
+            <button class="falloutbtn" onclick="setRadio('Other Radio')">[Other Radio]</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="generate('enc_paeRadio')">[Play with the tuning]</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="setRadio('radio-selection')">[BACK]</button>
           </li>
         </ul>
       </div>
@@ -370,13 +393,240 @@
       <div class="dropdown-kuno" id="scene-selection">
         <ul>
           <li>
-            <button class="falloutbtn" onclick="setScene('own')">I'm playing my own adventure.</button>
+            <button class="falloutbtn" onclick="setScene('own')">Test my expected Scene for my own adventure. (Mythic)</button>
           </li>
           <li>
-            <button class="falloutbtn" onclick="setScene('premade')">I'm playing a pre-made adventure.</button>
+            <button class="falloutbtn" onclick="setScene('premade')">Test my expected Scene for a pre-made adventure. (Mythic)</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="Scene('check_pum')">Test my expected Scene for any adventure. (PUM)</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="Scene('get_pum')">Generate a Scene. (PUM)</button>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="dropdown-kuno" id="more-selection">
+        <ul>
+          <li>
+            <button class="falloutbtn" onclick="openDropdown2('advnt-selection')">[ADVENTURE]</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="openDropdown2('comp-selection')">[COMPLICATION]</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="openDropdown2('enc-selection')">[ENCOUNTER]</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="openDropdown2('event-selection')">[EVENT]</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="openDropdown2('loc-selection')">[LOCATION]</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="openDropdown2('loot-selection')">[LOOT]</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="openDropdown2('npc-selection')">[NPC]</button>
+          </li>
+          <li>
+            <button class="falloutbtn" onclick="openDropdown2('back2home')">I am done here.</button>
           </li>
         </ul>
       </div>
-    
+    <div class="dropdown-kuno" id="location-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('lc1')">Wilderness Region</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('lc2')">City Region</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('lc3')">Structure Region</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('lc4')">Area of a Large Region</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('lc5')">Area of a Small Region</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('exitLC')">I am done with Mythic LC.</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown-kuno" id="npc-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="defineNPC('devilsrun')">I want to know about a character. (Devil's Run)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineNPC('myz')">I want to know about a character. (Mutant Year Zero)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineNPC('dust')">I want to know about a character. (Other Dust)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineNPC('papoc')">I want to know about a character. (Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineNPC('UNE')">I want to know about a character. (UNE)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineNPC('devilsrun_gang')">I want to know about a gang. (Devil's Run)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('pae_surv')">I want to know about a survivor group. (Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineNPC('exit')">I am done with NPCs.</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown-kuno" id="loc-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('devilsRun')">I want to know about a location. (Devil's Run)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="openDropdown2('location-selection')">I want to know about a location. (Mythic LC)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('loc_myz')">I want to know about a sector. (MYZ)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('dust')">I want to know about a location. (Other Dust)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('loc_pae')">I want to know about a location. (Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('devilsRun_set')">I want to know about a settlement. (Devil's Run)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="defineLoc('exit')">I am done with Locations.</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown-kuno" id="comp-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="generate('complication_pum')">What is happening? (Complication - PUM)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('complication_myzArk')">What is happening in the Ark? (Complication - MYZ)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('complication_myzZone')">What is happening in the Zone? (Complication - MYZ)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('combat_pum')">What is going on in this fight? (Combat Modifier - PUM)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('comp-selection')">I am done with complications.</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown-kuno" id="advnt-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="generate('adv_dr')">How can I help? (Devil's Run)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('adv_myz')">How can I help? (MYZ)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('advnt-selection')">I am done with adventures.</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown-kuno" id="enc-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc_dr')">What the %$#?! (Devil's Run)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc_myz')">What the %$#?! (Threat - MYZ)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc_paeArt')">What the %$#?! (Artifact - Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc_paeAstral')">What the %$#?! (Astral - Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc_paeBandit')">What the %$#?! (Bandit - Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc_paeBarter')">What the %$#?! (Barter - Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc_paeCrt')">What the %$#?! (Creature - Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc_paeRad')">What the %$#?! (Danger Zone - Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc_paeV')">What the %$#?! (Vehicle - Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('enc-selection')">I am done with encounters.</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown-kuno" id="loot-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="generate('loot_dr')">What did I find? (Devil's Run)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('loot_myz')">What did I find? (Mutant: Year Zero)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('loot_paeB')">What did I find in the building? (Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('loot_paeW')">What did I find in the Wasteland? (Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('loot-selection')">I am done with loot.</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown-kuno" id="event-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="generate('event_paeWeather')">How is the weather today? (Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('event_paeCond')">What is with the environment? (Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('event_paeSick')">What is this disease outbreak I am hearing about? (Post-Apoc Enc.)</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="generate('event-selection')">I am done with events.</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown-kuno" id="randomQ-selection">
+      <ul>
+        <li>
+          <button class="falloutbtn" onclick="randomQ('loc')">[Location]</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="randomQ('travel')">[Travel]</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="randomQ('social')">[Social]</button>
+        </li>
+        <li>
+          <button class="falloutbtn" onclick="randomQ('sit')">[Situation]</button>
+        </li>
+      </ul>
+    </div>
 </body>
 </html>
